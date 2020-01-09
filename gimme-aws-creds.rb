@@ -106,6 +106,11 @@ class GimmeAwsCreds < Formula
       venv.pip_install Pathname.pwd
     end
 
+    resource("six").stage do
+      rm_f "pyproject.toml"
+      venv.pip_install Pathname.pwd
+    end
+
     # resource("Pillow").stage do
     #   inreplace "setup.py" do |s|
     #     if OS.mac?
