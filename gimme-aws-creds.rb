@@ -100,11 +100,11 @@ class GimmeAwsCreds < Formula
     #   venv.pip_install Pathname.pwd
     # end
 
-    res = resources.map(&:name).to_set - ["boto3"]
+    # res = resources.map(&:name).to_set - ["boto3"]
 
-    res.each do |r|
-      venv.pip_install resource(r)
-    end
+    # res.each do |r|
+    #   venv.pip_install resource(r)
+    # end
 
     venv.pip_install_and_link buildpath
   end
