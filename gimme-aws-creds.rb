@@ -81,13 +81,12 @@ class GimmeAwsCreds < Formula
 
     venv = virtualenv_create(libexec, "python3")
 
-    resource("botocore").stage do
-      # Without removing this file, `pip` will ignore the `setup.py` file and
-      # attempt to download the [`flit`](https://github.com/takluyver/flit)
-      # build system.
-      rm_f "pyproject.toml"
-
-      venv.pip_install Pathname.pwd
+    res = resources.map(&:name).to_set - ["boto3","botocore",'urllib3']
+    res.each do |r|
+      resource(r).stage do
+        rm_f "pyproject.toml"
+        venv.pip_install Pathname.pwd
+      end
     end
 
     resource("boto3").stage do
