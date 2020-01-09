@@ -7,6 +7,8 @@ class GimmeAwsCreds < Formula
   sha256 "ee4809b5cc91c6f63534125a90cab9e8feef2c6a7902d3bbac727cec8309527e"
   head "https://github.com/Nike-Inc/gimme-aws-creds.git"
 
+  # example: https://raw.githubusercontent.com/Homebrew/linuxbrew-core/master/Formula/aws-google-auth.rb
+
   # bottle do
   #   cellar :any
   #   sha256 "44f635f9ed0028f17542e73f5318040a5848c74ccf54c5aefaef599046674991" => :catalina
@@ -98,6 +100,11 @@ class GimmeAwsCreds < Formula
     sha256 "b26104d6835d1f5e49452a26eb2ff87fe7090b89dfcaee5ea2212697e1e1d7ae"
   end
 
+  resource "idna" do
+    url "https://files.pythonhosted.org/packages/ad/13/eb56951b6f7950cadb579ca166e448ba77f9d24efc03edd7e55fa57d04b7/idna-2.8.tar.gz#sha256=c357b3f628cf53ae2c4c05627ecc484553142ca23264e593d327bcde5e9c3407"
+    sha256 "c357b3f628cf53ae2c4c05627ecc484553142ca23264e593d327bcde5e9c3407"
+  end
+
   def install
     if OS.mac?
       # Fix "ld: file not found: /usr/lib/system/libsystem_darwin.dylib" for lxml
@@ -180,7 +187,12 @@ class GimmeAwsCreds < Formula
       rm_f "pyproject.toml"
       venv.pip_install Pathname.pwd
     end
-    
+
+    resource("idna").stage do
+      rm_f "pyproject.toml"
+      venv.pip_install Pathname.pwd
+    end
+
     # resource("Pillow").stage do
     #   inreplace "setup.py" do |s|
     #     if OS.mac?
