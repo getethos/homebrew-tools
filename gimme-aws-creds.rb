@@ -7,13 +7,13 @@ class GimmeAwsCreds < Formula
   sha256 "ee4809b5cc91c6f63534125a90cab9e8feef2c6a7902d3bbac727cec8309527e"
   head "https://github.com/Nike-Inc/gimme-aws-creds.git"
 
-  bottle do
-    cellar :any
-    sha256 "44f635f9ed0028f17542e73f5318040a5848c74ccf54c5aefaef599046674991" => :catalina
-    sha256 "7874bf9cf14dbec7ec8ba2cc1af8e22c72ff693212bcc7b7aa0b0d32a756fec2" => :mojave
-    sha256 "fb7cf1b3aa3897922c22f78e14b3ee98a830ad8f71652740c50c9775511fb8d8" => :high_sierra
-    sha256 "4151db65c6bb6e0cb721ecd451b04af50610a3b321f89959cd0defef111dc31d" => :x86_64_linux
-  end
+  # bottle do
+  #   cellar :any
+  #   sha256 "44f635f9ed0028f17542e73f5318040a5848c74ccf54c5aefaef599046674991" => :catalina
+  #   sha256 "7874bf9cf14dbec7ec8ba2cc1af8e22c72ff693212bcc7b7aa0b0d32a756fec2" => :mojave
+  #   sha256 "fb7cf1b3aa3897922c22f78e14b3ee98a830ad8f71652740c50c9775511fb8d8" => :high_sierra
+  #   sha256 "4151db65c6bb6e0cb721ecd451b04af50610a3b321f89959cd0defef111dc31d" => :x86_64_linux
+  # end
 
   # depends_on "freetype"
   # depends_on "jpeg"
@@ -100,11 +100,11 @@ class GimmeAwsCreds < Formula
     #   venv.pip_install Pathname.pwd
     # end
 
-    # res = resources.map(&:name).to_set - ["entrypoints", "Pillow"]
+    res = resources.map(&:name).to_set - ["boto3"]
 
-    # res.each do |r|
-    #   venv.pip_install resource(r)
-    # end
+    res.each do |r|
+      venv.pip_install resource(r)
+    end
 
     venv.pip_install_and_link buildpath
   end
