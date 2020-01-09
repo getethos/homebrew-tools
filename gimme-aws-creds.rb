@@ -125,6 +125,11 @@ class GimmeAwsCreds < Formula
       rm_f "pyproject.toml"
       venv.pip_install Pathname.pwd
     end
+
+    resource("okta").stage do
+      rm_f "pyproject.toml"
+      venv.pip_install Pathname.pwd
+    end
     
     # resource("Pillow").stage do
     #   inreplace "setup.py" do |s|
