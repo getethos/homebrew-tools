@@ -155,26 +155,24 @@ class GimmeAwsCreds < Formula
     sha256 "3cda1f0ed8747339bbdf71b9f38ca74c7b592f24f65cdb3ab3765e4b02871651"
   end
 
-  unless OS.mac?
-    resource "pycparser" do
-      url "https://files.pythonhosted.org/packages/68/9e/49196946aee219aead1290e00d1e7fdeab8567783e83e1b9ab5585e6206a/pycparser-2.19.tar.gz#sha256=a988718abfad80b6b157acce7bf130a30876d27603738ac39f140993246b25b3"
-      sha256 "a988718abfad80b6b157acce7bf130a30876d27603738ac39f140993246b25b3"
-    end
+  resource "pycparser" do
+    url "https://files.pythonhosted.org/packages/68/9e/49196946aee219aead1290e00d1e7fdeab8567783e83e1b9ab5585e6206a/pycparser-2.19.tar.gz#sha256=a988718abfad80b6b157acce7bf130a30876d27603738ac39f140993246b25b3"
+    sha256 "a988718abfad80b6b157acce7bf130a30876d27603738ac39f140993246b25b3"
+  end
 
-    resource "cffi" do
-      url "https://files.pythonhosted.org/packages/2d/bf/960e5a422db3ac1a5e612cb35ca436c3fc985ed4b7ed13a1b4879006f450/cffi-1.13.2.tar.gz#sha256=599a1e8ff057ac530c9ad1778293c665cb81a791421f46922d80a86473c13346"
-      sha256 "599a1e8ff057ac530c9ad1778293c665cb81a791421f46922d80a86473c13346"
-    end
+  resource "cffi" do
+    url "https://files.pythonhosted.org/packages/2d/bf/960e5a422db3ac1a5e612cb35ca436c3fc985ed4b7ed13a1b4879006f450/cffi-1.13.2.tar.gz#sha256=599a1e8ff057ac530c9ad1778293c665cb81a791421f46922d80a86473c13346"
+    sha256 "599a1e8ff057ac530c9ad1778293c665cb81a791421f46922d80a86473c13346"
+  end
 
-    resource "jeepney" do
-      url "https://files.pythonhosted.org/packages/3a/b6/28c665d48e48b5b7e6a26853d6b4595c4031de7798a6c4985b14492ebd14/jeepney-0.4.1.tar.gz#sha256=13806f91a96e9b2623fd2a81b950d763ee471454aafd9eb6d75dbe7afce428fb"
-      sha256 "13806f91a96e9b2623fd2a81b950d763ee471454aafd9eb6d75dbe7afce428fb"
-    end
+  resource "jeepney" do
+    url "https://files.pythonhosted.org/packages/3a/b6/28c665d48e48b5b7e6a26853d6b4595c4031de7798a6c4985b14492ebd14/jeepney-0.4.1.tar.gz#sha256=13806f91a96e9b2623fd2a81b950d763ee471454aafd9eb6d75dbe7afce428fb"
+    sha256 "13806f91a96e9b2623fd2a81b950d763ee471454aafd9eb6d75dbe7afce428fb"
+  end
 
-    resource "secretstorage" do
-      url "https://files.pythonhosted.org/packages/a6/89/df343dbc2957a317127e7ff2983230dc5336273be34f2e1911519d85aeb5/SecretStorage-3.1.1.tar.gz#sha256=20c797ae48a4419f66f8d28fc221623f11fc45b6828f96bdb1ad9990acb59f92"
-      sha256 "20c797ae48a4419f66f8d28fc221623f11fc45b6828f96bdb1ad9990acb59f92"
-    end
+  resource "secretstorage" do
+    url "https://files.pythonhosted.org/packages/a6/89/df343dbc2957a317127e7ff2983230dc5336273be34f2e1911519d85aeb5/SecretStorage-3.1.1.tar.gz#sha256=20c797ae48a4419f66f8d28fc221623f11fc45b6828f96bdb1ad9990acb59f92"
+    sha256 "20c797ae48a4419f66f8d28fc221623f11fc45b6828f96bdb1ad9990acb59f92"
   end
 
   def install
