@@ -130,6 +130,42 @@ class GimmeAwsCreds < Formula
       rm_f "pyproject.toml"
       venv.pip_install Pathname.pwd
     end
+
+    
+    resource("beautifulsoup4").stage do
+      rm_f "pyproject.toml"
+      venv.pip_install Pathname.pwd
+    end
+
+    
+    resource("configparser").stage do
+      rm_f "pyproject.toml"
+      venv.pip_install Pathname.pwd
+    end
+
+    
+    resource("docutils").stage do
+      rm_f "pyproject.toml"
+      venv.pip_install Pathname.pwd
+    end
+
+    
+    resource("keyring").stage do
+      rm_f "pyproject.toml"
+      venv.pip_install Pathname.pwd
+    end
+
+    
+    resource("requests").stage do
+      rm_f "pyproject.toml"
+      venv.pip_install Pathname.pwd
+    end
+
+    
+    resource("fido2").stage do
+      rm_f "pyproject.toml"
+      venv.pip_install Pathname.pwd
+    end
     
     # resource("Pillow").stage do
     #   inreplace "setup.py" do |s|
