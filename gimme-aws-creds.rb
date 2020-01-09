@@ -43,6 +43,16 @@ class GimmeAwsCreds < Formula
     sha256 "dbe59173209418ae49d485b87d1681aefa36252ee85884c31346debd19463232"
   end
 
+  resource "jmespath" do
+    url "https://files.pythonhosted.org/packages/2c/30/f0162d3d83e398c7a3b70c91eef61d409dea205fb4dc2b47d335f429de32/jmespath-0.9.4.tar.gz#sha256=bde2aef6f44302dfb30320115b17d030798de8c4110e28d5cf6cf91a7a31074c"
+    sha256 "bde2aef6f44302dfb30320115b17d030798de8c4110e28d5cf6cf91a7a31074c"
+  end
+
+  resource "docutils" do
+    url "https://files.pythonhosted.org/packages/05/fd/d62c2944d9df894b07eaa7430decc4c80977e644922a85fbdec337d6af82/docutils-0.14rc1.tar.gz#sha256=7ee93a6fbab0f46bdda4d94384de40a04bbbbb53dbd019ce0fbbbfed22f6589a"
+    sha256 "7ee93a6fbab0f46bdda4d94384de40a04bbbbb53dbd019ce0fbbbfed22f6589a"
+  end
+
   resource "botocore" do
     url "https://files.pythonhosted.org/packages/c6/13/28d1a23cd1468bb8ab057044385a80c259df04ad8ffd2d973ac11146b85c/botocore-1.12.155.tar.gz#sha256=e5f5ea3edd16d2846ca984fd57d31ad98526020fcea630f47bb00a11e61957b9"
     sha256 "e5f5ea3edd16d2846ca984fd57d31ad98526020fcea630f47bb00a11e61957b9"
@@ -111,6 +121,11 @@ class GimmeAwsCreds < Formula
       venv.pip_install Pathname.pwd
     end
 
+    resource("jmespath").stage do
+      rm_f "pyproject.toml"
+      venv.pip_install Pathname.pwd
+    end
+    
     # resource("Pillow").stage do
     #   inreplace "setup.py" do |s|
     #     if OS.mac?
