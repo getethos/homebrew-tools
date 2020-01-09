@@ -81,20 +81,25 @@ class GimmeAwsCreds < Formula
 
     venv = virtualenv_create(libexec, "python3")
 
-    # resource("boto3").stage do
-    #   rm_f "pyproject.toml"
-    #   venv.pip_install Pathname.pwd
-    # end
+    resource("boto3").stage do
+      rm_f "pyproject.toml"
+      venv.pip_install Pathname.pwd
+    end
 
-    # resource("botocore").stage do
-    #   rm_f "pyproject.toml"
-    #   venv.pip_install Pathname.pwd
-    # end
+    resource("botocore").stage do
+      rm_f "pyproject.toml"
+      venv.pip_install Pathname.pwd
+    end
 
-    # resource("urllib3").stage do
-    #   rm_f "pyproject.toml"
-    #   venv.pip_install Pathname.pwd
-    # end
+    resource("urllib3").stage do
+      rm_f "pyproject.toml"
+      venv.pip_install Pathname.pwd
+    end
+
+    resource("python-dateutil").stage do
+      rm_f "pyproject.toml"
+      venv.pip_install Pathname.pwd
+    end
 
     # resource("Pillow").stage do
     #   inreplace "setup.py" do |s|
@@ -116,11 +121,11 @@ class GimmeAwsCreds < Formula
     #   venv.pip_install Pathname.pwd
     # end
 
-    res = resources.map(&:name).to_set - ["boto3","botocore","urllib3","python-dateutil"]
-    res.each do |r|
-      # venv.pip_install resource(r)
-      venv.pip_install Pathname.pwd
-    end
+    # res = resources.map(&:name).to_set - ["boto3","botocore","urllib3","python-dateutil"]
+    # res.each do |r|
+    #   # venv.pip_install resource(r)
+    #   venv.pip_install Pathname.pwd
+    # end
 
     venv.pip_install_and_link buildpath
   end
