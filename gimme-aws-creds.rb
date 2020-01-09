@@ -105,6 +105,11 @@ class GimmeAwsCreds < Formula
     sha256 "c357b3f628cf53ae2c4c05627ecc484553142ca23264e593d327bcde5e9c3407"
   end
 
+  resource "entrypoints" do
+    url "https://files.pythonhosted.org/packages/b4/ef/063484f1f9ba3081e920ec9972c96664e2edb9fdc3d8669b0e3b8fc0ad7c/entrypoints-0.3.tar.gz#sha256=c70dd71abe5a8c85e55e12c19bd91ccfeec11a6e99044204511f9ed547d48451"
+    sha256 "c70dd71abe5a8c85e55e12c19bd91ccfeec11a6e99044204511f9ed547d48451"
+  end
+
   def install
     if OS.mac?
       # Fix "ld: file not found: /usr/lib/system/libsystem_darwin.dylib" for lxml
@@ -193,6 +198,11 @@ class GimmeAwsCreds < Formula
       venv.pip_install Pathname.pwd
     end
 
+    resource("entrypoints").stage do
+      rm_f "pyproject.toml"
+      venv.pip_install Pathname.pwd
+    end
+
     # resource("Pillow").stage do
     #   inreplace "setup.py" do |s|
     #     if OS.mac?
@@ -213,11 +223,10 @@ class GimmeAwsCreds < Formula
     #   venv.pip_install Pathname.pwd
     # end
 
-    # res = resources.map(&:name).to_set - ["boto3","botocore","urllib3","python-dateutil"]
-    # res.each do |r|
-    #   # venv.pip_install resource(r)
-    #   venv.pip_install Pathname.pwd
-    # end
+    res = resources.map(&:name).to_set - ["entrypoints"]
+    res.each do |r|
+      venv.pip_install resource(r)
+    end
 
     venv.pip_install_and_link buildpath
   end
