@@ -1,4 +1,4 @@
-class GimmeAWSCreds < Formula
+class GimmeAwsCreds < Formula
   include Language::Python::Virtualenv
 
   desc "Acquire AWS credentials using Okta"
