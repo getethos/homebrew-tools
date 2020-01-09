@@ -118,7 +118,8 @@ class GimmeAwsCreds < Formula
 
     res = resources.map(&:name).to_set - ["boto3","botocore","urllib3","python-dateutil"]
     res.each do |r|
-      venv.pip_install resource(r)
+      # venv.pip_install resource(r)
+      venv.pip_install Pathname.pwd
     end
 
     venv.pip_install_and_link buildpath
