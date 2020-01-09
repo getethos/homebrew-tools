@@ -81,32 +81,20 @@ class GimmeAwsCreds < Formula
 
     venv = virtualenv_create(libexec, "python3")
 
-    resource("boto3").stage do
-      # Without removing this file, `pip` will ignore the `setup.py` file and
-      # attempt to download the [`flit`](https://github.com/takluyver/flit)
-      # build system.
-      rm_f "pyproject.toml"
+    # resource("boto3").stage do
+    #   rm_f "pyproject.toml"
+    #   venv.pip_install Pathname.pwd
+    # end
 
-      venv.pip_install Pathname.pwd
-    end
+    # resource("botocore").stage do
+    #   rm_f "pyproject.toml"
+    #   venv.pip_install Pathname.pwd
+    # end
 
-    resource("botocore").stage do
-      # Without removing this file, `pip` will ignore the `setup.py` file and
-      # attempt to download the [`flit`](https://github.com/takluyver/flit)
-      # build system.
-      rm_f "pyproject.toml"
-
-      venv.pip_install Pathname.pwd
-    end
-
-    resource("urllib3").stage do
-      # Without removing this file, `pip` will ignore the `setup.py` file and
-      # attempt to download the [`flit`](https://github.com/takluyver/flit)
-      # build system.
-      rm_f "pyproject.toml"
-
-      venv.pip_install Pathname.pwd
-    end
+    # resource("urllib3").stage do
+    #   rm_f "pyproject.toml"
+    #   venv.pip_install Pathname.pwd
+    # end
 
     # resource("Pillow").stage do
     #   inreplace "setup.py" do |s|
@@ -128,11 +116,10 @@ class GimmeAwsCreds < Formula
     #   venv.pip_install Pathname.pwd
     # end
 
-    # res = resources.map(&:name).to_set - ["boto3"]
-
-    # res.each do |r|
-    #   venv.pip_install resource(r)
-    # end
+    res = resources.map(&:name).to_set - ["boto3","botocore","urllib3","python-dateutil"]
+    res.each do |r|
+      venv.pip_install resource(r)
+    end
 
     venv.pip_install_and_link buildpath
   end
