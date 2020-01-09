@@ -194,14 +194,14 @@ class GimmeAwsCreds < Formula
       venv.pip_install Pathname.pwd
     end
 
-    resource("okta").stage do
-      # Without removing this file, `pip` will ignore the `setup.py` file and
-      # attempt to download the [`flit`](https://github.com/takluyver/flit)
-      # build system.
-      rm_f "pyproject.toml"
+    # resource("okta").stage do
+    #   # Without removing this file, `pip` will ignore the `setup.py` file and
+    #   # attempt to download the [`flit`](https://github.com/takluyver/flit)
+    #   # build system.
+    #   rm_f "pyproject.toml"
 
-      venv.pip_install Pathname.pwd
-    end
+    #   venv.pip_install Pathname.pwd
+    # end
 
     resource("Pillow").stage do
       inreplace "setup.py" do |s|
